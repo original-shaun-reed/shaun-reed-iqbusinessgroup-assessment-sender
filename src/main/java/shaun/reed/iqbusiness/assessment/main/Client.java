@@ -19,6 +19,17 @@ public class Client {
     return connection.createChannel();
   }
 
+  public void checkIfAppShouldExit(String name, Connection connection) throws Exception {
+    if (!name.isEmpty()) {
+      if("q".equalsIgnoreCase(name) || "'q'".equalsIgnoreCase(name) || name.contains("q")) {
+        connection.close();
+
+        System.out.println("Exiting application . . .");
+        System.exit(0);
+      }
+    }
+  }
+
   public void onInit() throws Exception {
     ConnectionFactory factory = new ConnectionFactory();
     factory.setHost("localhost");
@@ -35,14 +46,8 @@ public class Client {
     System.out.println("Enter your name: ");
     String name = inputScanner.nextLine();
 
-
-    while(!"q".equalsIgnoreCase(name)) {
-      if("q".equalsIgnoreCase(name) || "'q'".equalsIgnoreCase(name)) {
-        connection.close();
-
-        System.out.println("Exiting application . . .");
-        System.exit(0);
-      }
+    while(true) {
+      checkIfAppShouldExit(name, connection);
 
       if (!name.isEmpty()) {
         String message = "Hello my name is, " + name;
