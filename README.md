@@ -1,4 +1,4 @@
-##SHAUN REED IQ ASSESSMENT (SENDER)
+##SHAUN REED MQ RABBIT ASSESSMENT (SENDER)
 
 IntelliJ was used while developing this maven project, using Java 8.
 
